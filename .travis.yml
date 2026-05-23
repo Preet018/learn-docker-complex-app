@@ -1,0 +1,15 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t preet1018/complex-app-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run -e CI=true preet1018/complex-app-test npm test
+
+after_success:
+  - docker build -t preet1018/complex-app-client ./client
+  - docker build -t preet1018/complex-app-nginx ./nginx
+  - docker build -t preet1018/complex-app-server ./server
+  - docker build -t preet1018/complex-app-worker ./worker
