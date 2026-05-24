@@ -13,3 +13,16 @@ after_success:
   - docker build -t preet1018/complex-app-nginx ./nginx
   - docker build -t preet1018/complex-app-server ./server
   - docker build -t preet1018/complex-app-worker ./worker
+
+deploy:
+  provider: elasticbeanstalk
+  region: "ap-south-1"
+  app: "learn-docker-complex-app"
+  env: "learn-docker-complex-app-env"
+  bucket_name: elasticbeanstalk-ap-south-1-147856894694
+  bucket_path: "docker-multi"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: $AWS_SECRET_KEY
