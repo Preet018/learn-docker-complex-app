@@ -59,7 +59,6 @@ pipeline {
         }
 
         stage('Deploy to Elastic Beanstalk') {
-            when { branch 'master' }
             steps {
                 withCredentials([
     string(credentialsId: 'AWS_ACCESS_KEY', variable: 'AWS_ACCESS_KEY_ID'),
