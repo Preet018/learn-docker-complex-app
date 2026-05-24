@@ -61,9 +61,9 @@ pipeline {
         stage('Deploy to Elastic Beanstalk') {
             steps {
                 withCredentials([
-    string(credentialsId: 'AWS_ACCESS_KEY', variable: 'AWS_ACCESS_KEY_ID'),
-    string(credentialsId: 'AWS_SECRET_KEY', variable: 'AWS_SECRET_ACCESS_KEY')
-]) {
+                    string(credentialsId: 'AWS_ACCESS_KEY', variable: 'AWS_ACCESS_KEY_ID'),
+                    string(credentialsId: 'AWS_SECRET_KEY', variable: 'AWS_SECRET_ACCESS_KEY')
+                ]) {
 
                     sh '''
                     zip -r deploy.zip . \
