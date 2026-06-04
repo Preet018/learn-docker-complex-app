@@ -16,4 +16,4 @@ spec:
         - name: client
           image: preet1018/multi-client
           ports:
-            - containerPoort: 3000
+            - containerPort: 3000
