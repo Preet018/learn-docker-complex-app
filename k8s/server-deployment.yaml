@@ -17,3 +17,16 @@ spec:
           image: preet1018/multi-server
           ports:
             - containerPort: 5000
+          env:
+            - name: REDIS_HOST
+              value: redis-service
+            - name: REDIS_PORT
+              value: 6379
+            - name: PGUSER
+              value: postgres
+            - name: PGHOST
+              value: postgres-service
+            - name: PGDATABASE
+              value: postgres
+            - name: PGPORT
+              value: 5432
