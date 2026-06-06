@@ -2,7 +2,7 @@ pipeline {
     agent any
     
     environment {
-        GITHUB_REPO_URL = 'https://github.com/Preet018/Log-Anomaly-Detection.git'
+        GITHUB_REPO_URL = 'https://github.com/Preet018/learn-docker-complex-app.git'
         DOCKER_USERNAME = 'preet1018'
         IMAGE_TAG = sh(script: 'git rev-parse --short HEAD', returnStdout: true).trim()
 
@@ -55,6 +55,11 @@ pipeline {
                         sh "docker push ${DOCKER_USERNAME}/multi-nginx:latest"
                     }
                 }
+            }
+        }
+        stage ('Deployment') {
+            steps {
+                sh "kubectl apply -f k8s"
             }
         }
     }
